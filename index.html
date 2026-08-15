@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PS5 SlopKit Jailbreak</title>
-  <link rel="stylesheet" href="main.css?v=final">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NADA REPUBLICANO</title>
+<style>
+  body {
+    background: radial-gradient(circle at 50% 28%, #1a0a00 0, #0d0500 44%, #000000 100%);
+    color: #ff6b00;
+    font-family: "Consolas", monospace;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 { color: #ff6b00; font-size: 32px; margin: 0 0 10px; }
+  p { color: #cc5500; font-size: 20px; margin: 0 0 20px; }
+  a {
+    display: inline-block;
+    padding: 16px 36px;
+    margin: 8px;
+    background: #1a0a00;
+    border: 2px solid #ff6b00;
+    border-radius: 8px;
+    color: #ffaa44;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  a:focus { outline: 3px solid #ff6b00; }
+  #credits { margin-top: 30px; font-size: 14px; color: #803300; }
+</style>
 </head>
 <body>
-  <div class="p-2">
-    <h1 class="text-center">NADA REPUBLICANO</h1>
-    <p class="text-center" id="top-bar-text">Current Firmware: <span class="fw-bold" id="current-fw">Unknown</span></p>
-  </div>
-
-  <div id="main-content">
-    <div id="pre-jb-view" class="selected">
-      <a tabindex="0" class="btn fw-bold" id="run-jb"
-         href="slopkit/poops.html?go=1&amp;auto=1&amp;production=1&amp;trigger=netcontrol&amp;attempts=8&amp;only=ps0_preflight,ps1_prepare,ps3_stage0,ps4_validate,ps5_stage1,ps6_stage2,ps8_stage3,ps9_stage4,ps10_stage5&amp;log=debug&amp;payload=1&amp;v=final">Jailbreak</a>
-      <a tabindex="0" class="btn btn-secondary" id="run-sender"
-         href="slopkit/poops.html?go=1&amp;auto=1&amp;production=1&amp;trigger=netcontrol&amp;attempts=8&amp;only=ps0_preflight,ps1_prepare,ps3_stage0,ps4_validate,ps5_stage1,ps6_stage2,ps8_stage3,ps9_stage4,ps10_stage5&amp;log=debug&amp;payload=1&amp;reuse=1&amp;v=final">Payloads (sender)</a>
-    </div>
-  </div>
-
-  <div class="position-relative text-center p-2 mb-2">
-    <p class="text-secondary">Credits</p>
-    <p class="text-secondary mt-2">Jordy, Egy, Sonic, DR b , Zeco, Gezine, Echostretch, Ufm42, TheFloW, John Tornblom, Flatz, Mastermind, Pinguim, Batman, Idlesauce and PS5 R&amp;D Discord.</p>
-  </div>
-
-  <script>
-    try {
-      var firmwareMatch = /PlayStation 5\/(\d+\.\d+)/.exec(navigator.userAgent);
-      var firmware = firmwareMatch ? firmwareMatch[1] : "";
-      document.getElementById("current-fw").textContent = firmware || "Not detected";
-    } catch (e) { }
-    try { document.getElementById("run-jb").focus(); } catch (e) { }
-  </script>
+<h1>NADA REPUBLICANO</h1>
+<p>Current Firmware: <span id="current-fw">detecting...</span></p>
+<div id="main-content">
+  <a href="slopkit/poops.html?go=1&auto=1&production=1&trigger=netcontrol&attempts=8&only=ps0_preflight,ps1_prepare,ps3_stage0,ps4_validate,ps5_stage1,ps6_stage2,ps8_stage3,ps9_stage4,ps10_stage5" id="run-jb">Jailbreak</a>
+  <a href="slopkit/poops.html?go=1&payload=1">Payloads</a>
+</div>
+<div id="credits">Credits: Jordy, Egy, Sonic, Yenyen, Zeco, Gezine, Echostretch, Ufm42, TheFlow, John Tornblom, Flatz, Idlesauce and PS5 R&amp;D Discord.</div>
+<script>
+try {
+  var firmwareMatch = /PlayStation 5\/(\d+\.\d+)/.exec(navigator.userAgent);
+  var firmware = firmwareMatch ? firmwareMatch[1] : "Not detected";
+  document.getElementById("current-fw").textContent = firmware;
+} catch(e) {}
+document.getElementById("run-jb").focus();
+</script>
 </body>
 </html>
