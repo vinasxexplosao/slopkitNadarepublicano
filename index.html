@@ -27,7 +27,7 @@ h1 { color: #ff6b00 !important; }
 </div>
 <div class="position-relative text-center p-2 mb-2">
 <p class="text-secondary">Credits</p>
-<p class="text-secondary mt-2">Jordy, Egy, Sonic, Yenyen, Zeco, Gezine, Echostretch, Ufm42, TheFloW, John Tornblom, Flatz, Idlesauce and PS5 R&amp;D Discord.</p>
+<p class="text-secondary mt-2">Jordy, Egy, small dog, dr b, Zeco, Gezine, Echostretch, Ufm42, TheFloW, John Tornblom, Flatz, Idlesauce and PS5 R&amp;D Discord.</p>
 </div>
 <script>
 try {
@@ -37,6 +37,16 @@ var POOPS_HREF = "slopkit/poops.html?go=1&auto=1&production=1&trigger=netcontrol
 + "&payload=1&v=final";
 var P2JB_HREF = "slopkit/p2jb.html?go=1&auto=1&production=1&log=debug"
 + "&payload=1&v=final";
+var POOPS_FIRMWARES = [
+  "7.00", "7.01", "7.20", "7.40", "7.60", "7.61",
+  "8.00", "8.20", "8.40", "8.60",
+  "9.00", "9.05", "9.20", "9.40", "9.60",
+  "10.00", "10.01", "10.20", "10.40", "10.60",
+  "11.00", "11.20", "11.40", "11.60", "12.00"
+];
+var P2JB_FIRMWARES = [
+  "12.02", "12.20", "12.40", "12.60", "12.70"
+];
 var ua = navigator.userAgent;
 var fwStr = "";
 var marker = "PlayStation 5/";
@@ -48,14 +58,9 @@ var el = document.getElementById("current-fw");
 el.textContent = fwStr || "Not detected";
 var jbButton = document.getElementById("run-jb");
 var fwStatus = document.getElementById("fw-status");
-var parts = fwStr.split(".");
-var fwNum = -1;
-if (parts.length === 2) {
-  fwNum = parseInt(parts[0], 10) * 100 + parseInt(parts[1], 10);
-}
 var href = "";
-if (fwNum >= 700 && fwNum <= 1200) href = POOPS_HREF;
-else if (fwNum >= 1202 && fwNum <= 1270) href = P2JB_HREF;
+if (POOPS_FIRMWARES.indexOf(fwStr) !== -1) href = POOPS_HREF;
+else if (P2JB_FIRMWARES.indexOf(fwStr) !== -1) href = P2JB_HREF;
 if (href) {
   jbButton.setAttribute("href", href);
   try { jbButton.focus(); } catch (e) { }
